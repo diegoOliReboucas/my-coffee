@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css'
+import { Carrinho } from './components/Carrinho';
+import { Header } from './components/Header/Index';
+import { ItemAll } from './components/ItemAll/Index';
+import { ModalEndereço } from './components/ModalEndereço/Index';
+import { ModalItem } from './components/ModalItem/Index';
+import { Pedidos } from './components/Pedidos/Index';
+import { SeatchArea } from './components/SearchArea/Index';
+import { Usuario } from './components/Usuario/Index';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+      <ModalItem />
+      <ModalEndereço />
+      <SeatchArea />
+      <Header/>
+        <Routes>
+          <Route path="/" element={<ItemAll />} />
+          <Route path="pedidos" element={<Pedidos />} />
+          <Route path="usuario" element={<Usuario />} />
+        </Routes>
+        <Carrinho />
+      </BrowserRouter>
     </div>
-  );
+  )
 }
 
 export default App;
